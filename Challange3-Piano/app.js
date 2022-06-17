@@ -4,7 +4,7 @@ document.querySelectorAll('a').forEach((element, index) => {
 
 
 
-function playAudio(path){
+const playAudio = (path) => {
     let audio = new Audio(path);
     audio.loop = false;
     audio.play();
