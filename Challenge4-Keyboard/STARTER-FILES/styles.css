@@ -57,6 +57,10 @@ h1 {
   padding: 18px 24px;
   height: 65px;
   box-sizing: border-box;
+  
+}
+.key:focus{
+  outline: none;
 }
 
 .utility {
