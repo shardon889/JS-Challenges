@@ -43,10 +43,9 @@ const reduceTimeEachSecond = () => {
   } else {
     seconds--;
   }
-  if (minutes >= 0 && minutes <= 9) minutes = "0" + (minutes % 10);
-  if (seconds >= 0 && seconds <= 9) seconds = "0" + (seconds % 10);
-  minuteField.value = minutes;
-  secondTextField.value = seconds;
+
+  minuteField.value = check(minutes);
+  secondTextField.value = check(seconds);
 };
 
 //const to perform time reduction every second
@@ -54,4 +53,8 @@ const reduceTimer = () => {
   timerId = setInterval(reduceTimeEachSecond, 1000);
 };
 
+const check = (value) => {
+  if (value >= 0 && value <= 9) value = "0" + (value % 10);
+  return value;
+};
 export { startButton, gear, timerId, timeUp, reduceTimer };

@@ -1,40 +1,26 @@
-import {
-  isEditing,
-  checkValidTime,
-  isActive,
-} from "./check.js";
+import { isEditing, checkValidTime, isActive } from "./check.js";
 import { getMinute, getSecond, getRing } from "./get.js";
-import { startButton, timerId, reduceTimer } from "./script.js";
-
-
+import { startButton, timerId, reduceTimer } from "./index.js";
 
 //toggle state when start/stop is clicked
-const toggleTimer = () => {
-  //if time being edited
+export const toggleTimer = () => {
   if (isEditing()) {
-    alert("Finish editing");
+    setTimeEditDisabled();
   }
 
-  //if timer running
-  else if (isActive()) {
+  if (isActive()) {
     stopTimer();
+  } else {
+    startTimer();
   }
-
-  //all set
-  else 
-  startTimer();
 };
 
-//starts the timer
-const startTimer = () => {
-  //put the timer in running state
-
-  changeColorToRed();
+export const startTimer = () => {
   toggleTimerText();
   reduceTimer();
 };
 
-const stopTimer = () => {
+export const stopTimer = () => {
   //set the timer running state to not running
   //stop the interval
   //change the start/stop button text.
@@ -44,33 +30,37 @@ const stopTimer = () => {
 };
 
 //changing stop to start and vice-versa
-const toggleTimerText = () => {
+export const toggleTimerText = () => {
   startButton.innerHTML = startButton.innerHTML === "start" ? "stop" : "start";
 };
 
 //changing ring colour to red when timer runs out.
-const changeColorToRed = () => {
+export const changeColorToRed = () => {
   let ring = getRing();
   ring.style.stroke = "#900A0A";
 };
 
 //changing timer colour to green when timer runs.
-const changeColorToGreen = () => {
+export const changeColorToGreen = () => {
   let ring = getRing();
   ring.style.stroke = "#09A65A";
 };
 
 //disable time editing
-const setTimeEditDisabled = () => {
+export const setTimeEditDisabled = () => {
   //get minute and second field and set there disabled property as true
   let minuteField = getMinute();
   let secondTextField = getSecond();
+
+  //if time not valid
+  if (!checkValidTime()) resetTime();
+
   minuteField.disabled = true;
   secondTextField.disabled = true;
 };
 
 //enable time editing
-const setTimeEditEnabled = () => {
+export const setTimeEditEnabled = () => {
   //get minute and second field and set there disabled property as false
   let minuteField = getMinute();
   let secondTextField = getSecond();
@@ -79,15 +69,12 @@ const setTimeEditEnabled = () => {
 };
 
 //edit time
-const editTime = () => {
-  //check is timer is currently running.
+export const editTime = () => {
   if (isActive()) {
-    alert("Stop the timer first to edit the time.");
+    stopTimer();
   }
   //if timer is not running check if timer is already in editing state.
-  else if (isEditing()) {
-    //if entered time is in valid format disable editing
-    //else display alert message
+  if (isEditing()) {
     if (checkValidTime()) setTimeEditDisabled();
     else alert("Oops! Time Invalid");
   }
@@ -97,14 +84,10 @@ const editTime = () => {
   }
 };
 
-export {
-  changeColorToRed,
-  changeColorToGreen,
-  startTimer,
-  stopTimer,
-  toggleTimer,
-  toggleTimerText,
-  setTimeEditDisabled,
-  setTimeEditEnabled,
-  editTime,
+const resetTime = () => {
+  let minuteField = getMinute();
+  let secondTextField = getSecond();
+
+  minuteField.value = "15";
+  secondTextField.value = "00";
 };

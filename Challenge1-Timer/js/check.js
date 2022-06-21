@@ -1,5 +1,5 @@
 import { getMinute, getSecond } from "./get.js";
-import { startButton } from "./script.js";
+import { startButton } from "./index.js";
 
 //check if the input is an integer
 const isInteger = (number) => {
@@ -15,16 +15,12 @@ const isTimeinRange = (time) => {
 
 //check if time is currently in editing state
 const isEditing = () => {
-  //check if seconds text field is currenty is editing state
-  //if yes return true
-  //else return false
   let secondTextField = getSecond();
   return !secondTextField.disabled ? true : false;
 };
 
 //check if entered time value is valid
 const checkValidTime = () => {
-  //get minute and seconds value
   let minutes = getMinute().value;
   let seconds = getSecond().value;
   //minutes and seconds should be between 59 and 0
@@ -36,7 +32,7 @@ const checkValidTime = () => {
 
 //Check if timer is running
 const isActive = () => {
-  //if start button text is stop timer is running
+  //if start button text is stop then timer is running
   //return true
   //otherwise return false
   if (startButton.innerHTML === "stop") return true;
