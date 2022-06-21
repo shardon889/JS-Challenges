@@ -1,22 +1,20 @@
-//get aacess to minute text field
-const getMinute = () => {
-  let minuteDiv = document.querySelector(".minutes");
-  let minuteField = minuteDiv.children[0];
+// get aacess to minute text field
+export const getMinute = () => {
+  const minuteDiv = document.querySelector('.minutes');
+  const minuteField = minuteDiv.children[0];
   return minuteField;
 };
 
-//get access to seconds text field
-const getSecond = () => {
-  let secondDiv = document.querySelector(".seconds");
-  let secondTextField = secondDiv.children[0];
+// get access to seconds text field
+export const getSecond = () => {
+  const secondDiv = document.querySelector('.seconds');
+  const secondTextField = secondDiv.children[0];
   return secondTextField;
 };
 
-//get access to ring
-const getRing = () => {
-  let ring = document.querySelector("circle");
+// get access to ring
+export const getRing = () => {
+  const ring = document.querySelector('circle');
   return ring;
 };
 
-export { getMinute
-    , getSecond, getRing };
