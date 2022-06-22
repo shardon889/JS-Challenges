@@ -4,8 +4,7 @@ import {startButton} from './index.js';
 // check if the input is an integer
 const isInteger = (number) => {
   // check if it is a number and does not contain decimal
-  if (!Number.isNaN(number) && number.indexOf('.') < 0) return true;
-  return false;
+  return !Number.isNaN(number) && number.indexOf('.') < 0 ? true : false;
 };
 
 // check is the given time is between 0 and 59
@@ -26,10 +25,13 @@ const checkValidTime = () => {
   const seconds = getSecond().value;
   // minutes and seconds should be between 59 and 0
   // also it should be an integer, no decimal values allowed
+  let flag = false;
   if (isInteger(minutes) && isInteger(seconds)) {
-    if (isTimeinRange(minutes) && isTimeinRange(seconds)) return true;
+    if (isTimeinRange(minutes) && isTimeinRange(seconds)) {
+      flag = true;
+    }
   }
-  return false;
+  return flag;
 };
 
 // Check if timer is running
