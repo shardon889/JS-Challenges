@@ -41,11 +41,11 @@
     }
   },
   "lint-staged": {
-    "*.{js,css,html,md}" : "prettier --write",
+    "*.{js,css,html,md}": "prettier --write",
     "*.js": [
       "eslint --fix"
     ],
-    "**/*.css":[
+    "**/*.css": [
       "stylelint \"**/*.css\" --fix"
     ]
   }

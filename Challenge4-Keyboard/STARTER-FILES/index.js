@@ -17,7 +17,6 @@ const randomJiggle = () => {
 
 let currentJiggling;
 
-
 const startJiggling = (key) => {
   currentJiggling = key;
   key.classList.add('jiggle');

@@ -17,4 +17,3 @@ export const getRing = () => {
   const ring = document.querySelector('circle');
   return ring;
 };
-
