@@ -21,7 +21,8 @@ const timeUp = () => {
     clearInterval(timerId);
     changeColorToRed();
     toggleTimerText();
-    setTimeout(function() {
+    // eslint-disable-next-line space-before-function-paren
+    setTimeout(function () {
         alert('Time\'s up.');
     }, 1);
 };

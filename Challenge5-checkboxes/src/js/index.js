@@ -1,7 +1,7 @@
 // eslint-disable-next-line object-curly-spacing
-import { episodes } from './list.js';
+import {episodes} from './list.js';
 // eslint-disable-next-line object-curly-spacing
-import { createList } from './create.js';
+import {createList} from './create.js';
 
 // selected the ui element on-screen
 const uiItems = document.querySelector('.episodes');
