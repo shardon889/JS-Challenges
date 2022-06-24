@@ -23,7 +23,8 @@ const timeUp = () => {
     toggleTimerText();
     // eslint-disable-next-line space-before-function-paren
     setTimeout(function () {
-        alert('Time\'s up.');
+        // eslint-disable-next-line quotes
+        alert("Time's up.");
     }, 1);
 };
 
